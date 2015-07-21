@@ -6,8 +6,8 @@ Cumulative Distribution Function
 
 The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Normal](https://en.wikipedia.org/wiki/Normal_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="" data-equation="eq:cdf">
-	<img src="" alt="Cumulative distribution function for a Normal distribution.">
+<div class="equation" align="center" data-raw-text="F(x;\mu,\sigma) = \frac12\left[1 + \operatorname{erf}\left(\frac{x-\mu}{\sigma\sqrt{2}}\right)\right]" data-equation="eq:cdf">
+	<img src="https://cdn.rawgit.com/distributions-io/normal-cdf/336f5057e07852b8358ce8d6c721600833343718/docs/img/eqn.svg" alt="Cumulative distribution function for a Normal distribution.">
 	<br>
 </div>
 
@@ -40,15 +40,15 @@ var matrix = require( 'dstructs-matrix' ),
 	i;
 
 out = cdf( 1 );
-// returns
+// returns ~0.841
 
-x = [ -4, -2, 0, 2, 4 ];
+x = [ -2, -1, 0, 1, 2 ];
 out = cdf( x );
-// returns [...]
+// returns [ ~0.0228, ~0.159, ~0.5, ~0.841, ~0.977 ]
 
 x = new Float32Array( x );
 out = cdf( x );
-// returns Float64Array( [...] )
+// returns Float64Array( [~0.0228,~0.159,~0.5,~0.841,~0.977] )
 
 x = new Float32Array( 6 );
 for ( i = 0; i < 6; i++ ) {
@@ -63,9 +63,9 @@ mat = matrix( x, [3,2], 'float32' );
 
 out = cdf( mat );
 /*
-	[
-
-	   ]
+	[ ~0.0013 ~0.0228
+	  ~0.159  ~0.5
+	  ~0.841  ~0.977 ]
 */
 ```
 
@@ -82,24 +82,24 @@ The function accepts the following `options`:
 A [Normal](https://en.wikipedia.org/wiki/Normal_distribution) distribution is a function of 2 parameter(s): `mu`(mean) and `sigma`(standard deviation). By default, `mu` is equal to `0` and `sigma` is equal to `1`. To adjust either parameter, set the corresponding option(s).
 
 ``` javascript
-var x = [ -4, -2, 0, 2, 4 ];
+var x = [ -2, -1, 0, 1, 2 ];
 
 var out = cdf( x, {
 	'mu': 3,
 	'sigma': 10
 });
-// returns [...]
+// returns [ ~0.309, ~0.345, ~0.382, ~0.421, ~0.46 ]
 ```
 
 For non-numeric `arrays`, provide an accessor `function` for accessing `array` values.
 
 ``` javascript
 var data = [
-	[0,-4],
-	[1,-2],
+	[0,-2],
+	[1,-1],
 	[2,0],
-	[3,2],
-	[4,4],
+	[3,1],
+	[4,2],
 ];
 
 function getValue( d, i ) {
@@ -109,7 +109,7 @@ function getValue( d, i ) {
 var out = cdf( data, {
 	'accessor': getValue
 });
-// returns [...]
+// returns [ ~0.0228, ~0.159, ~0.5, ~0.841, ~0.977 ]
 ```
 
 
@@ -117,11 +117,11 @@ To [deepset](https://github.com/kgryte/utils-deep-set) an object `array`, provid
 
 ``` javascript
 var data = [
-	{'x':[0,-4]},
-	{'x':[1,-2]},
+	{'x':[0,-2]},
+	{'x':[1,-1]},
 	{'x':[2,0]},
-	{'x':[3,2]},
-	{'x':[4,4]},
+	{'x':[3,1]},
+	{'x':[4,2]},
 ];
 
 var out = cdf( data, {
@@ -130,11 +130,11 @@ var out = cdf( data, {
 });
 /*
 	[
-		{'x':[0,]},
-		{'x':[1,]},
-		{'x':[2,]},
-		{'x':[3,]},
-		{'x':[4,]},
+		{'x':[0,~0.0228]},
+		{'x':[1,~0.159]},
+		{'x':[2,~0.5]},
+		{'x':[3,~0.841]},
+		{'x':[4,~0.977]},
 	]
 */
 
@@ -147,18 +147,18 @@ By default, when provided a [`typed array`](https://developer.mozilla.org/en-US/
 ``` javascript
 var x, out;
 
-x = new Float64Array( [-4,-2,0,2,4] );
+x = new Float64Array( [-2,-1,0,1,2] );
 
 out = cdf( x, {
 	'dtype': 'float32'
 });
-// returns Float32Array( [...] )
+// returns Float32Array( [~0.0228,~0.159,~0.5,~0.841,~0.977] )
 
 // Works for plain arrays, as well...
-out = cdf( [-4,-2,0,2,4], {
+out = cdf( [-2,-1,0,1,2], {
 	'dtype': 'float32'
 });
-// returns Float32Array( [...] )
+// returns Float32Array( [~0.0228,~0.159,~0.5,~0.841,~0.977] )
 ```
 
 By default, the function returns a new data structure. To mutate the input data structure (e.g., when input values can be discarded or when optimizing memory usage), set the `copy` option to `false`.
@@ -170,12 +170,12 @@ var bool,
 	x,
 	i;
 
-x = [ -4, -2, 0, 2, 4 ];
+x = [ -2, -1, 0, 1, 2 ];
 
 out = cdf( x, {
 	'copy': false
 });
-// returns [...]
+// returns [ ~0.0228, ~0.159, ~0.5, ~0.841, ~0.977 ]
 
 bool = ( x === out );
 // returns true
@@ -195,9 +195,9 @@ out = cdf( mat, {
 	'copy': false
 });
 /*
-	[
-
-	   ]
+	[ ~0.0013 ~0.0228
+	  ~0.159  ~0.5
+	  ~0.841  ~0.977 ]
 */
 
 bool = ( mat === out );
