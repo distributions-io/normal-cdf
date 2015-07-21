@@ -1,0 +1,65 @@
+{
+  "name": "distributions-normal-cdf",
+  "version": "0.0.0",
+  "description": "Normal distribution cumulative distribution function (CDF).",
+  "author": {
+    "name": "Philipp Burckhardt",
+    "email": "pburckhardt@outlook.com"
+  },
+  "contributors": [
+    {
+      "name": "Philipp Burckhardt",
+      "email": "pburckhardt@outlook.com"
+    }
+  ],
+  "scripts": {
+    "test": "./node_modules/.bin/mocha",
+    "test-cov": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coverage -- -R spec",
+    "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coveralls/coverage --report lcovonly -- -R spec && cat ./reports/coveralls/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./reports/coveralls"
+  },
+  "main": "./lib",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/compute-io/normal-cdf.git"
+  },
+  "keywords": [
+    "distributions.io",
+    "distributions",
+    "probability",
+    "statistics",
+    "stats",
+    "cdf",
+    "cumulative distribution",
+    "distribution function"
+  ],
+  "bugs": {
+    "url": "https://github.com/compute-io/normal-cdf/issues"
+  },
+  "dependencies": {
+    "compute-array-constructors": "^1.0.0",
+    "dstructs-matrix": "^2.0.0",
+    "utils-deep-get": "^1.0.0",
+    "utils-deep-set": "^1.0.1",
+    "validate.io-array-like": "^1.0.1",
+    "validate.io-boolean-primitive": "^1.0.0",
+    "validate.io-function": "^1.0.2",
+    "validate.io-matrix-like": "^1.0.2",
+    "validate.io-nan": "^1.0.3",
+    "validate.io-nonnegative-integer": "^1.0.0",
+    "validate.io-number-primitive": "^1.0.0",
+    "validate.io-object": "^1.0.4",
+    "validate.io-positive-primitive": "^1.0.0",
+    "validate.io-string-primitive": "^1.0.0",
+    "validate.io-typed-array-like": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "3.x.x",
+    "mocha": "2.x.x",
+    "coveralls": "^2.11.1",
+    "istanbul": "^0.3.0",
+    "jshint": "2.x.x",
+    "jshint-stylish": "2.x.x",
+	"validate.io-finite": "^1.0.0"
+  },
+  "license": "MIT"
+}
