@@ -55,9 +55,15 @@ describe( 'partial cdf', function tests() {
 		}
 	});
 
-	it( 'should return `NaN` if provided `NaN` as input', function test() {
+	it( 'should return a function which which returns `NaN` if provided `NaN` as input', function test() {
 		var cdf = partial(  mu, sigma );
 		assert.isTrue( isnan( cdf( NaN ) ) );
+	});
+
+	it( 'should return a step-function function when sigma = 0', function test() {
+		var cdf = partial(  mu, 0 );
+		assert.strictEqual( cdf( mu - 0.01 , mu, 0 ), 0 );
+		assert.strictEqual( cdf( mu + 0.01, mu, 0 ), 1 );
 	});
 
 });

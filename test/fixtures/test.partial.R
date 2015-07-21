@@ -2,7 +2,7 @@ options( digits = 16 )
 library( jsonlite )
 
 mu = 0
-sigma = 1
+sigma = 0.5
 x = c( -5, -2.5, 0, 2.5, 5 )
 y = pnorm( x, mu,sigma )
 

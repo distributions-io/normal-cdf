@@ -1,8 +1,8 @@
 options( digits = 16 )
 library( jsonlite )
 
-mu = 0
-sigma = 1
+mu = 10
+sigma = 5
 x = seq( -1000, 1000, 0.5 )
 y = pnorm( x, mu,sigma )
 

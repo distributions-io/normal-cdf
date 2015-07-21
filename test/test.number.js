@@ -38,7 +38,7 @@ describe( 'number cdf', function tests() {
 		expect( cdf ).to.be.a( 'function' );
 	});
 
-	it( 'should evaluate the Normal probability density function', function test() {
+	it( 'should evaluate the Normal cdf', function test() {
 		var actual;
 		for ( var i = 0; i < data.length; i++ ) {
 			actual =  cdf( data[ i ], mu, sigma );
@@ -50,6 +50,11 @@ describe( 'number cdf', function tests() {
 
 	it( 'should return `NaN` if provided `NaN` as input', function test() {
 		assert.isTrue( isnan( cdf( NaN, mu, sigma ) ) );
+	});
+
+	it( 'should evaluate the Normal cdf when sigma = 0', function test() {
+		assert.strictEqual( cdf( 1.9 , 2, 0 ), 0 );
+		assert.strictEqual( cdf( 2.1 , 2, 0 ), 1 );
 	});
 
 });
