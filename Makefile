@@ -14,6 +14,7 @@ else
 	OPEN ?= xdg-open
 endif
 
+
 # NOTES #
 
 NOTES ?= 'TODO|FIXME|WARNING|HACK|NOTE'
@@ -123,7 +124,7 @@ lint-jshint: node_modules
 
 # NODE #
 
-# Installing node_modules:
+# Install node_modules:
 .PHONY: install
 
 install:

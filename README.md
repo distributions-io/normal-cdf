@@ -1,17 +1,17 @@
 Cumulative Distribution Function
 ===
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coveralls-image]][coveralls-url] [![Dependencies][dependencies-image]][dependencies-url]
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][codecov-image]][codecov-url] [![Dependencies][dependencies-image]][dependencies-url]
 
 > [Normal](https://en.wikipedia.org/wiki/Normal_distribution) distribution [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function).
 
-The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Normal](https://en.wikipedia.org/wiki/Normal_distribution) random variable is
+The [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [normal](https://en.wikipedia.org/wiki/Normal_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="F(x;\mu,\sigma) = \frac12\left[1 + \operatorname{erf}\left(\frac{x-\mu}{\sigma\sqrt{2}}\right)\right]" data-equation="eq:cdf">
 	<img src="https://cdn.rawgit.com/distributions-io/normal-cdf/336f5057e07852b8358ce8d6c721600833343718/docs/img/eqn.svg" alt="Cumulative distribution function for a Normal distribution.">
 	<br>
 </div>
 
-where `mu` is the mean and `sigma` is the standard deviation.
+where `mu` is the mean and `sigma > 0` is the standard deviation.
 
 ## Installation
 
@@ -30,7 +30,7 @@ var cdf = require( 'distributions-normal-cdf' );
 
 #### cdf( x[, options] )
 
-Evaluates the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for the [Normal](https://en.wikipedia.org/wiki/Normal_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
+Evaluates the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for the [normal](https://en.wikipedia.org/wiki/Normal_distribution) distribution. `x` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
@@ -79,7 +79,7 @@ The function accepts the following `options`:
 *	__path__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path.
 *	__sep__: [deepget](https://github.com/kgryte/utils-deep-get)/[deepset](https://github.com/kgryte/utils-deep-set) key path separator. Default: `'.'`.
 
-A [Normal](https://en.wikipedia.org/wiki/Normal_distribution) distribution is a function of 2 parameter(s): `mu`(mean) and `sigma`(standard deviation). By default, `mu` is equal to `0` and `sigma` is equal to `1`. To adjust either parameter, set the corresponding option(s).
+A [normal](https://en.wikipedia.org/wiki/Normal_distribution) distribution is a function of two parameters: `mu`(mean) and `sigma`(standard deviation). By default, `mu` is equal to `0` and `sigma` is equal to `1`. To adjust either parameter, set the corresponding option.
 
 ``` javascript
 var x = [ -2, -1, 0, 1, 2 ];
@@ -364,8 +364,8 @@ Copyright &copy; 2015. The [Compute.io](https://github.com/compute-io) Authors.
 [travis-image]: http://img.shields.io/travis/distributions-io/normal-cdf/master.svg
 [travis-url]: https://travis-ci.org/distributions-io/normal-cdf
 
-[coveralls-image]: https://img.shields.io/coveralls/distributions-io/normal-cdf/master.svg
-[coveralls-url]: https://coveralls.io/r/distributions-io/normal-cdf?branch=master
+[codecov-image]: https://img.shields.io/codecov/c/github/distributions-io/normal-cdf/master.svg
+[codecov-url]: https://codecov.io/r/distributions-io/normal-cdf?branch=master
 
 [dependencies-image]: http://img.shields.io/david/distributions-io/normal-cdf.svg
 [dependencies-url]: https://david-dm.org/distributions-io/normal-cdf

@@ -15,7 +15,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha",
     "test-cov": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coverage -- -R spec",
-    "coveralls": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --dir ./reports/coveralls/coverage --report lcovonly -- -R spec && cat ./reports/coveralls/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./reports/coveralls"
+    "codecov": "istanbul cover ./node_modules/.bin/_mocha --dir ./reports/codecov/coverage --report lcovonly -- -R spec && cat ./reports/codecov/coverage/lcov.info | codecov && rm -rf ./reports/codecov"
   },
   "main": "./lib",
   "repository": {
@@ -58,7 +58,7 @@
   "devDependencies": {
     "chai": "3.x.x",
     "mocha": "2.x.x",
-    "coveralls": "^2.11.1",
+    "codecov.io": "^0.1.5",
     "istanbul": "^0.3.0",
     "jshint": "2.x.x",
     "jshint-stylish": "2.x.x",

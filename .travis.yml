@@ -1,15 +1,12 @@
 language: node_js
 node_js:
+  - '5'
+  - '4'
   - '0.12'
-  - '0.11'
   - '0.10'
-  - '0.8'
   - 'iojs'
 before_install:
   - npm update -g npm
-  - sudo apt-get install r-base
-  - wget https://cran.r-project.org/src/contrib/Archive/jsonlite/jsonlite_0.9.15.tar.gz
-  - sudo R CMD INSTALL jsonlite_0.9.15.tar.gz
-  - Rscript ./test/fixtures/runner.R
 after_script:
-  - npm run coveralls
+  - npm run codecov
+
